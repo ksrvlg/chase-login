@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Support | 24/7 Assistance</title>
+  <meta name="description" content="Get immediate help from our customer support team. Available 24/7 for your convenience.">
+  <style>
+    :root {
+      --primary-color: #28a745;
+      --primary-hover: #218838;
+      --alert-color: #b30000;
+      --text-color: #333;
+      --light-text: #666;
+      --background: #ffffff;
+      --overlay: rgba(0,0,0,0.6);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 600px;
+      width: 100%;
+      padding: 20px;
+    }
+    
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+    
+    .call-btn {
+      display: inline-block;
+      font-size: 20px;
+      color: white;
+      background-color: var(--primary-color);
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin: 10px 0;
+      transition: background-color 0.3s, transform 0.2s;
+      font-weight: bold;
+    }
+    
+    .call-btn:hover, .call-btn:focus {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+    
+    .call-btn:active {
+      transform: translateY(0);
+    }
+    
+    p {
+      margin-top: 15px;
+      font-size: 16px;
+      color: var(--light-text);
+    }
+    
+    /* Popup styles */
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    #popup .content {
+      background: var(--background);
+      padding: 30px;
+      max-width: 450px;
+      width: 100%;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: relative;
+    }
+    
+    #close-popup {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--light-text);
+    }
+    
+    #popup h2 {
+      color: var(--alert-color);
+      margin-bottom: 15px;
+    }
+    
+    #popup a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    
+    #popup a:hover, #popup a:focus {
+      background: var(--primary-hover);
+    }
+    
+    /* Blinking alert effect */
+    .alert-text {
+      color: var(--alert-color);
+      font-weight: bold;
+      font-size: 16px;
+      margin: 15px 0;
+      animation: blink 1.5s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.7; }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Footer styles */
+    footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--light-text);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 22px;
+      }
+      
+      .call-btn {
+        font-size: 18px;
+        padding: 12px 25px;
+      }
+      
+      #popup .content {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Click to Call Customer Support</h1>
+    <a href="tel:+1-806-535-3270" class="call-btn" aria-label="Call customer support at 8 0 6, 5 3 5, 3 2 7 0">Call Now: +1-806-535-3270</a>
+    <p>Our customer service team is available 24/7 to assist you</p>
+  </div>
+
+  <!-- Popup Modal -->
+  <div id="popup" role="dialog" aria-labelledby="popupHeading" aria-modal="true">
+    <div class="content">
+      <button id="close-popup" aria-label="Close notification">×</button>
+      <h2 id="popupHeading">Important Security Notice</h2>
+      <p class="alert-text">
+        We've detected unusual activity that may require verification
+      </p>
+      <p>For your protection, please contact our support team to verify your account:</p>
+      <a href="tel:+1-806-535-3270">📞 Call Support: +1-806-535-3270</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2023 Customer Support. All rights reserved.</p>
+  </footer>
+
+  <!-- Statcounter Code for games -->
+  <script type="text/javascript">
+  var sc_project=13157096; 
+  var sc_invisible=1; 
+  var sc_security="d9ee045d"; 
+  </script>
+  <script type="text/javascript"
+  src="https://www.statcounter.com/counter/counter.js"
+  async></script>
+  <noscript><div class="statcounter"><a title="free web stats"
+  href="https://statcounter.com/" target="_blank"><img
+  class="statcounter"
+  src="https://c.statcounter.com/13157096/0/d9ee045d/1/"
+  alt="free web stats"
+  referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+  <!-- End of Statcounter Code -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VCBLXTQNVQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VCBLXTQNVQ');
+  </script>
+
+  <script>
+    // Show popup after a delay or when user attempts to leave
+    document.addEventListener('DOMContentLoaded', function() {
+      const popup = document.getElementById('popup');
+      const closeBtn = document.getElementById('close-popup');
+      
+      // Show popup after 5 seconds instead of 3
+      const popupTimer = setTimeout(function(){
+        popup.style.display = "flex";
+      }, 5000);
+      
+      // Close popup functionality
+      closeBtn.addEventListener('click', function() {
+        popup.style.display = "none";
+      });
+      
+      // Close when clicking outside content
+      popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+          popup.style.display = "none";
+        }
+      });
+      
+      // Close with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" && popup.style.display === "flex") {
+          popup.style.display = "none";
+        }
+      });
+      
+      // Clear timer if user interacts with page
+      const clearPopupTimer = function() {
+        clearTimeout(popupTimer);
+        document.removeEventListener('click', clearPopupTimer);
+        document.removeEventListener('scroll', clearPopupTimer);
+      };
+      
+      document.addEventListener('click', clearPopupTimer);
+      document.addEventListener('scroll', clearPopupTimer);
+    });
+  </script>
+</body>
+</html>
